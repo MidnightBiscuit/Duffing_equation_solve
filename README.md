@@ -18,5 +18,8 @@ $$
 
 `Doubly_driven_oscillator_solveivp.py` is a program solving numerically the "modified" Duffing equation.
 The numerical solution relies on the function `solve_ivp` from `scipy` module. The method used is by default `RK45` ans `LSODA` proved to be a bit less precise. It is much faster that "naïvely" implementing a RK4 method by a factor 25 approximately.
+This program can solve the equation for different drive frequencies ($\omega$). To save memory usage only the last data points are saved for each frequency.
+
+Plotting the amplitude of motion against the drive frequency shows good agrement with the theory.
 
 ![Amplitude vs. detuning](hilbert_height_250204_REINMAN_RK45_a0241_4_1040.png)
