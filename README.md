@@ -20,7 +20,7 @@ $$
 \tan{\varphi} = \frac{8\mu\omega_0}{3\alpha a^2 - 8\omega_0\sigma}.
 $$
 
-In the porgam the tickle and nano-wire drives are independent such that $k\cos{\omega t} = k_{tkl}\cos(\omega_{tkl} t + \varphi_{tkl}) + k_{nw}\cos(\omega_{nw} t  + \varphi_{nw})$.
+In the program the tickle and nano-wire drives are independent such that $k\cos{\omega t} = k_{tkl}\cos(\omega_{tkl} t + \varphi_{tkl}) + k_{nw}\cos(\omega_{nw} t  + \varphi_{nw})$.
 
 ## Program
 
