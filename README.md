@@ -16,9 +16,7 @@ $$
 
 ## Program
 
-`Doubly_driven_oscillator_solveivp.py` is a program solving numerically the "modified" Duffing equation.
-The numerical solution relies on the function `solve_ivp` from `scipy` module. The method used is by default `RK45` ans `LSODA` proved to be a bit less precise. It is much faster that "naïvely" implementing a RK4 method by a factor 25 approximately.
-This program can solve the equation for different drive frequencies ($\omega$). To save memory usage only the last data points are saved for each frequency.
+$\star$ `DDDAO_3.py` is the main program of this repository. It solves the modified Duffing equation using `solve_ivp` function from `scipy` module. The equation is solved for a range of parameters sweept during an experiment. This allows to modify several parameters at once for each step of the solution. To save memory usage only the last data points are saved for each frequency. The physics is based upon the work of N. Akerman et al., "[Single-ion nonlinear mechanical oscillator](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.82.061402)," PRA 82, (2010). 
 
 Plotting the amplitude of motion against the drive frequency shows good agrement with the theory.
 
