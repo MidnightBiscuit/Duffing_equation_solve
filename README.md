@@ -20,6 +20,8 @@ $$
 \tan{\varphi} = \frac{8\mu\omega_0}{3\alpha a^2 - 8\omega_0\sigma}.
 $$
 
+In the porgam the tickle and nano-wire drives are independent such that $k\cos{\omega t} = k_{tkl}\cos{\omega_{tkl} t + \varphi_{tkl}} + k_{nw}\cos{\omega_{nw} t  + \varphi_{nw}}$.
+
 ## Program
 
 $\star$ `DDDAO_3.py` is the main program of this repository. It solves the modified Duffing equation using `solve_ivp` function from `scipy` module. The equation is solved for a range of parameters sweept during an experiment. This allows to modify several parameters at once for each step of the solution. To save memory usage only the last data points are saved for each frequency. The physics is based upon the work of N. Akerman et al., "[Single-ion nonlinear mechanical oscillator](https://journals.aps.org/pra/abstract/10.1103/PhysRevA.82.061402)," PRA 82, (2010). 
