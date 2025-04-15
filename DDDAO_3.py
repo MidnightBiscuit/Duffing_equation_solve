@@ -38,7 +38,8 @@ class DDDAO_3:
                 solve_ivp_method = 'RK45',
                 sweep_length = 21,
                 add_string=100):
-        '''
+
+        r'''
         Initialise the physical parameters of the trap coupling with nw, tickle and laser.
         Also initialise the parameters of the numerical simulation itself.
         Parameters
@@ -486,8 +487,8 @@ class DDDAO_3:
             print('=== Parameter set ===')
             self.lftria = 0
             print(f'  step number {self.k_sweep:02d}')
-            if math.fabs(self.omega_tkl - l) > 0.01*2*math.pi:
-                print(f'/!| Frequency missmatch !! by {math.fabs(self.omega_tkl - l):.3f} s-1')
+            # if math.fabs(self.omega_tkl - l) > 0.01*2*math.pi:
+            #     print(f'/!| Frequency missmatch !! by {math.fabs(self.omega_tkl - l):.3f} s-1')
 
             self.time = np.linspace(self.aux_t, self.aux_t + self.n_freq_sweep*self.dt, self.n_freq_sweep)
             # print(f'  dt = {np.diff(self.time)[0]}')
@@ -721,7 +722,7 @@ print(r";   :  .'    ;   :  .'    ;   :  .'    |  | ,'           \   \ .'    ")
 print(r"|   ,.'      |   ,.'      |   ,.'      `--''              `---`      ")
 print(r"'---'oubly   '---'riven   '---'amped       nharmonic           scillator ")
 # print("Doubly       Driven       Damped       Anharmonic     Oscillator     ")
-print("                                                                     ")
+print("                                                                      ")
 
 print("                       ADRIEN POINDRON                               ")
 print("                     University of Basel                             ")
@@ -732,23 +733,22 @@ print("version 3 (March 14, 2025)")
 print()
 print('=== INSTANTIATE DDDAO CLASS ===')
 
-solve_ivp_method = 'RK45' # LSODA
+solve_ivp_method = 'LSODA' # LSODA
 algorithm_print(solve_ivp_method)
 
 f_z = 422500
-# delta_f_z = 2000
-# offset_f_z = -500
-f_t = f_z # np.linspace(f_z+offset_f_z - delta_f_z, f_z+offset_f_z + delta_f_z, 41)
+delta_f_z = -3500
+offset_f_z = -500
+f_t = np.linspace(f_z+offset_f_z - delta_f_z, f_z+offset_f_z + delta_f_z, 15)
 
-phi_nw = np.linspace(0, 2*math.pi, 41)
-
-simulation = DDDAO_3(V_tkl = 0.025, V_nw = 1, V_piezo = 5/4.512899038958427, #  *0.7343421052582553   *0.9577642276422764
+simulation = DDDAO_3(V_tkl = 0.025, V_nw = 1, V_piezo = 5/4.512899038958427, # 0.7343421052582553  0.9577642276422764
                         omega_z = f_z*2*math.pi, omega_drive = f_t*2*math.pi,
-                        phi_tkl = 0, phi_nw = phi_nw,
-                        B = -4.5e19*0,
-                        cooling_rate = None, nl_damping_rate = None, #  345.8221951306219 0.03519716659973978
-                        i_init = 5000, i_freq_sweep = 10000, i_smooth_sweep = 25,
-                        sweep_length = len(phi_nw),
+                        phi_tkl = 0, phi_nw = 0,
+                        B = -4.71956166e+19,
+                        cooling_rate = None, nl_damping_rate = None, # 345.8221951306219 0.03519716659973978
+                        i_init = 2000, i_freq_sweep = 7500, i_smooth_sweep = 10,
+                        solve_ivp_method = solve_ivp_method, # RK45
+                        sweep_length = len(f_t),
                         add_string=100)
 
 start = time.time()
